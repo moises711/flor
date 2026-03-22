@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Feliz 21 de marzo</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1628 100%);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+			padding: 20px;
+			overflow-x: hidden;
+			position: relative;
+		}
+		.title {
+			text-align: center;
+			color: #ffd700;
+			font-size: clamp(1.5rem, 5vw, 1.8rem);
+			margin-bottom: 30px;
+			font-weight: 300;
+			letter-spacing: 2px;
+			text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+		}
+		/* Contenedor principal con luciérnagas */
+		.firefly-container {
+			position: relative;
+			width: clamp(280px, 90vw, 500px);
+			height: clamp(280px, 90vw, 500px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 30px 0 5px 0;
+		}
+
+		/* Poema central */
+		.poem {
+			text-align: center;
+			font-family: 'Georgia', serif;
+			font-size: clamp(1.1em, 2.5vw, 1.4em);
+			color: #ffd700;
+			padding: clamp(15px, 5vw, 30px);
+			text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+			line-height: 1.5;
+			z-index: 10;
+			position: relative;
+			animation: poemGlow 3s infinite alternate;
+		}
+
+		@keyframes poemGlow {
+			0% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+			100% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+		}
+
+		/* Luciérnagas */
+		.firefly {
+			position: absolute;
+			width: clamp(8px, 2vw, 12px);
+			height: clamp(8px, 2vw, 12px);
+			background: radial-gradient(circle at 30% 30%, #ffff00, #ffcc00);
+			border-radius: 50%;
+			box-shadow: 0 0 6px #ffff00, 0 0 12px #ffcc00, 0 0 20px rgba(255, 255, 0, 0.8);
+			animation: firefly-flight linear infinite;
+			z-index: 5;
+		}
+
+		@keyframes firefly-flight {
+			0% { 
+				opacity: 0;
+			}
+			10% { 
+				opacity: 1;
+			}
+			50% { 
+				opacity: 0.3;
+			}
+			100% { 
+				opacity: 0;
+			}
+		}
+
+		.firefly::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background: radial-gradient(circle at 30% 30%, #ffff00, transparent);
+			animation: glow 2s infinite;
+		}
+
+		@keyframes glow {
+			0%, 100% { box-shadow: 0 0 6px #ffff00, 0 0 12px #ffcc00; }
+			50% { box-shadow: 0 0 20px #ffff00, 0 0 40px #ffcc00; }
+		}
+
+		/* Posiciones y animaciones individuales para cada luciérnaga */
+		.firefly:nth-child(1) { animation: firefly1 8s infinite; }
+		.firefly:nth-child(2) { animation: firefly2 10s infinite; }
+		.firefly:nth-child(3) { animation: firefly3 12s infinite; }
+		.firefly:nth-child(4) { animation: firefly4 9s infinite; }
+		.firefly:nth-child(5) { animation: firefly5 11s infinite; }
+		.firefly:nth-child(6) { animation: firefly6 13s infinite; }
+		.firefly:nth-child(7) { animation: firefly7 7s infinite; }
+		.firefly:nth-child(8) { animation: firefly8 14s infinite; }
+
+		@keyframes firefly1 {
+			0% { left: 10%; top: 20%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 70%; top: 80%; opacity: 0.5; }
+			100% { left: 10%; top: 20%; opacity: 0; }
+		}
+
+		@keyframes firefly2 {
+			0% { left: 80%; top: 30%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 20%; top: 70%; opacity: 0.5; }
+			100% { left: 80%; top: 30%; opacity: 0; }
+		}
+
+		@keyframes firefly3 {
+			0% { left: 50%; top: 10%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 30%; top: 80%; opacity: 0.5; }
+			100% { left: 50%; top: 10%; opacity: 0; }
+		}
+
+		@keyframes firefly4 {
+			0% { left: 20%; top: 80%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 75%; top: 25%; opacity: 0.5; }
+			100% { left: 20%; top: 80%; opacity: 0; }
+		}
+
+		@keyframes firefly5 {
+			0% { left: 85%; top: 70%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 15%; top: 30%; opacity: 0.5; }
+			100% { left: 85%; top: 70%; opacity: 0; }
+		}
+
+		@keyframes firefly6 {
+			0% { left: 30%; top: 15%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 60%; top: 75%; opacity: 0.5; }
+			100% { left: 30%; top: 15%; opacity: 0; }
+		}
+
+		@keyframes firefly7 {
+			0% { left: 70%; top: 15%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 25%; top: 65%; opacity: 0.5; }
+			100% { left: 70%; top: 15%; opacity: 0; }
+		}
+
+		@keyframes firefly8 {
+			0% { left: 40%; top: 80%; opacity: 0; }
+			10% { opacity: 1; }
+			50% { left: 55%; top: 20%; opacity: 0.5; }
+			100% { left: 40%; top: 80%; opacity: 0; }
+		}
+
+		.scene {
+			display: none;
+		}
+		.hint {
+			text-align: center;
+			color: #ffcc00;
+			font-size: clamp(0.8em, 2vw, 0.9em);
+			margin-top: 8px;
+			animation: pulse 2s infinite;
+		}
+		@keyframes pulse {
+			0%, 100% { opacity: 0.6; }
+			50% { opacity: 1; }
+		}
+		
+		/* Media queries para móviles */
+		@media (max-width: 600px) {
+			body {
+				padding: 15px;
+			}
+			.title {
+				margin-bottom: 25px;
+			}
+		}
+
+		/* MARIPOSAS */
+		.butterfly {
+			position: fixed;
+			pointer-events: none;
+			z-index: 3;
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			animation: flutter 0.4s infinite, fly-path 15s infinite linear;
+			display: inline-block;
+			transform-origin: center;
+			filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+		}
+
+		/* Aleteo detallado y realista */
+		@keyframes flutter {
+			0% { 
+				transform: scaleX(1) rotateZ(-20deg) translateY(0);
+				animation-timing-function: ease-in;
+			}
+			12% { 
+				transform: scaleX(0.7) rotateZ(-5deg) translateY(-8px);
+				animation-timing-function: ease-out;
+			}
+			25% { 
+				transform: scaleX(0.5) rotateZ(0deg) translateY(-12px);
+				animation-timing-function: ease-in;
+			}
+			37% { 
+				transform: scaleX(0.6) rotateZ(-5deg) translateY(-8px);
+				animation-timing-function: ease-out;
+			}
+			50% { 
+				transform: scaleX(0.8) rotateZ(-20deg) translateY(0);
+				animation-timing-function: ease-in;
+			}
+			62% { 
+				transform: scaleX(1) rotateZ(5deg) translateY(-8px);
+				animation-timing-function: ease-out;
+			}
+			75% { 
+				transform: scaleX(1.2) rotateZ(20deg) translateY(-12px);
+				animation-timing-function: ease-in;
+			}
+			87% { 
+				transform: scaleX(1) rotateZ(5deg) translateY(-8px);
+				animation-timing-function: ease-out;
+			}
+			100% { 
+				transform: scaleX(1) rotateZ(-20deg) translateY(0);
+			}
+		}
+
+		.butterfly:nth-child(1) { 
+			animation: flutter 0.35s infinite, butterfly-path1 15s infinite linear; 
+			top: 10%; 
+		}
+		.butterfly:nth-child(2) { 
+			animation: flutter 0.4s infinite, butterfly-path2 18s infinite linear; 
+			top: 20%;
+			animation-delay: 0.1s, 0s;
+		}
+		.butterfly:nth-child(3) { 
+			animation: flutter 0.38s infinite, butterfly-path3 20s infinite linear; 
+			top: 15%;
+			animation-delay: 0.2s, 0s;
+		}
+
+		@keyframes butterfly-path1 {
+			0% { 
+				left: -50px;
+				transform: scaleX(1);
+			}
+			50% {
+				transform: scaleX(-1);
+			}
+			100% { 
+				left: 110vw;
+			}
+		}
+
+		@keyframes butterfly-path2 {
+			0% { 
+				right: -50px;
+				transform: scaleX(-1);
+			}
+			50% {
+				transform: scaleX(1);
+			}
+			100% { 
+				right: 110vw;
+			}
+		}
+
+		@keyframes butterfly-path3 {
+			0% { 
+				left: 50vw;
+				transform: translateY(0) scaleX(1);
+			}
+			25% { 
+				left: 10vw; 
+				transform: translateY(-30px);
+			}
+			50% {
+				left: 30vw;
+				transform: translateY(0) scaleX(-1);
+			}
+			75% {
+				left: 70vw;
+				transform: translateY(-30px);
+			}
+			100% { 
+				left: 100vw;
+				transform: translateY(0);
+			}
+		}
+
+		/* PÉTALOS CAYENDO */
+		.petal-fall {
+			position: fixed;
+			pointer-events: none;
+			z-index: 2;
+			animation: fall linear infinite;
+		}
+
+		@keyframes fall {
+			to {
+				transform: translateY(100vh) rotate(360deg);
+				opacity: 0;
+			}
+		}
+
+		/* Controles de música */
+		.music-controls {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			background: rgba(255, 215, 0, 0.1);
+			border: 2px solid #ffd700;
+			border-radius: 50px;
+			padding: 12px 16px;
+			z-index: 100;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			backdrop-filter: blur(10px);
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.music-controls:hover {
+			background: rgba(255, 215, 0, 0.2);
+			transform: scale(1.05);
+		}
+
+		.music-btn {
+			background: none;
+			border: none;
+			color: #ffd700;
+			font-size: 1.5rem;
+			cursor: pointer;
+			transition: transform 0.3s ease;
+		}
+
+		.music-btn:hover {
+			transform: scale(1.2);
+		}
+
+		.volume-slider {
+			width: 80px;
+			cursor: pointer;
+			accent-color: #ffd700;
+		}
+
+		/* Decoración estacional */
+		.season-info {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			color: #ffd700;
+			font-size: 0.9em;
+			text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+			z-index: 50;
+		}
+	</style>
+</head>
+<body>
+	<!-- Mariposas -->
+	<div class="butterfly">🦋</div>
+	<div class="butterfly">🦋</div>
+	<div class="butterfly">🦋</div>
+
+	<!-- Audio de fondo -->
+	<audio id="backgroundMusic" loop>
+		<source src="WhatsApp Audio 2026-03-21 at 9.54.05 PM.mp4" type="audio/mp4">
+	</audio>
+
+	<!-- Controles de música -->
+	<div class="music-controls">
+		<button class="music-btn" id="musicToggle" title="Activar/Desactivar música">🎵</button>
+		<input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30">
+	</div>
+
+	<!-- Información estacional -->
+	<div class="season-info">
+		🌸 Equinoccio de Primavera 🌸<br>
+		21 de Marzo
+	</div>
+
+	<div class="title"></div>
+	
+	<div class="firefly-container">
+		<!-- Luciérnagas -->
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		<div class="firefly"></div>
+		
+		<!-- Poema central -->
+		<div class="poem">
+			<strong>Bajo un cielo tranquilo de luces lejanas,</strong><br>
+			te pienso en silencio, te siento en el alma.<br>
+			Mientras las estrellas comienzan a hablar,<br>
+			mi corazón aprende tu nombre a pronunciar.<br><br>
+			No llegaste con prisa ni promesas vacías,<br>
+			llegaste despacio caminando mis días,<br>
+			como llega la luna besando el mar,<br>
+			y deja a las olas soñando sin parar.<br><br>
+			<em>Traías en tus ojos un cielo infinito ✨</em>
+		</div>
+	</div>
+	
+    <div class="hint">🌙 Ella era perfecta para mí, pero otro fue perfecto para ella. (Quizás en otro universo fue diferente)</div>
+
+	<script>
+		// Elementos de audio y controles
+		const backgroundMusic = document.getElementById('backgroundMusic');
+		const musicToggle = document.getElementById('musicToggle');
+		const volumeSlider = document.getElementById('volumeSlider');
+		let isPlaying = true;
+
+		// Establecer volumen inicial
+		backgroundMusic.volume = volumeSlider.value / 100;
+
+		// Reproducir automáticamente al cargar la página
+		window.addEventListener('load', function() {
+			backgroundMusic.play().catch(() => {
+				console.log('Autoplay no permitido, haz clic en el botón de música');
+			});
+			musicToggle.textContent = '🎵';
+		});
+
+		// Toggle música
+		musicToggle.addEventListener('click', function() {
+			isPlaying = !isPlaying;
+			if (isPlaying) {
+				backgroundMusic.play().catch(() => {
+					// Si hay error de reproducción, reintentar
+					backgroundMusic.currentTime = 0;
+					backgroundMusic.play();
+				});
+				musicToggle.textContent = '🎵';
+			} else {
+				backgroundMusic.pause();
+				musicToggle.textContent = '🔇';
+			}
+		});
+
+		// Control de volumen
+		volumeSlider.addEventListener('input', function() {
+			backgroundMusic.volume = this.value / 100;
+		});
+
+		// Generar pétalos cayendo
+		function createPetal() {
+			const petal = document.createElement('div');
+			petal.className = 'petal-fall';
+			petal.style.left = Math.random() * 100 + 'vw';
+			petal.style.top = '-20px';
+			petal.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+			petal.textContent = ['🌸', '🌹', '🏵️'][Math.floor(Math.random() * 3)];
+			petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+			petal.style.animationDelay = Math.random() * 2 + 's';
+			petal.style.opacity = Math.random() * 0.6 + 0.3;
+
+			document.body.appendChild(petal);
+
+			setTimeout(() => petal.remove(), 8000);
+		}
+
+		// Generar pétalos continuamente
+		setInterval(createPetal, 300);
+	</script>
+</body>
+</html>
